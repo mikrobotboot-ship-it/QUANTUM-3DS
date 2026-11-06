@@ -95,7 +95,7 @@
     <string name="select_citra_user_folder">Selecione a Pasta do Usuário</string>
     <string name="select_citra_user_folder_description"><![CDATA[Selecione o seu <a href=\"https://github.com/QUANTUM 3DS-emu/QUANTUM 3DS/wiki/Android-User-Data-and-Storage\">diretório de dados de usuário</a> com o botão abaixo.]]></string>
     <string name="select_which_user_directory_to_use">Parece que você possui pastas de usuário configuradas tanto para o Lime3DS quanto para o QUANTUM 3DS. Isso provavelmente ocorreu porque você atualizou para o QUANTUM 3DS e, quando solicitado, escolheu uma pasta de usuário diferente da que era usada pelo Lime3DS.\n\nIsso pode ter feito você pensar que perdeu seus saves ou outras configurações — pedimos desculpas se isso aconteceu.\n\nVocê gostaria de voltar a usar sua pasta de usuário original do Lime3DS, restaurando as configurações e jogos salvos do Lime3DS, ou manter sua pasta de usuário atual do QUANTUM 3DS?\n\nNenhuma das pastas será excluída, independentemente da sua escolha, e você pode alternar livremente entre elas usando a opção Selecionar Pasta do Usuário.</string>
-    <string name="keep_current_QUANTUM 3DS_directory">Manter diretório atual do QUANTUM 3DS</string>
+    <string name="keep_current_quantum3ds_directory">Manter diretório atual do QUANTUM 3DS</string>
     <string name="use_prior_lime3ds_directory">Usar o diretório antigo do Lime3DS</string>
     <string name="select">Selecionar</string>
     <string name="cannot_skip">Você não pode pular a configuração da pasta do usuário.</string>

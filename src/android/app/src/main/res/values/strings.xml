@@ -108,7 +108,7 @@
     <string name="select_citra_user_folder">Select User Folder</string>
     <string name="select_citra_user_folder_description"><![CDATA[Select your <a href="https://github.com/QUANTUM 3DS-emu/QUANTUM 3DS/wiki/Android-User-Data-and-Storage">user data</a> directory with the button below.]]></string>
     <string name="select_which_user_directory_to_use">You appear to have user directories set for both Lime3DS and QUANTUM 3DS. This is likely because you upgraded to QUANTUM 3DS, and when prompted chose a different user directory than what was being used for Lime3DS.\n\nThis may have resulted in you thinking you lost saves or other settings - we apologize if that happened.\n\nWould you like to go back to using your original Lime3DS user directory, restoring settings and save games from Lime3DS, or keep your current QUANTUM 3DS user directory?\n\nNeither directory will be deleted, regardless of your choice, and you may freely switch between them using the Select User Folder option.</string>
-    <string name="keep_current_QUANTUM 3DS_directory">Keep Current QUANTUM 3DS Directory</string>
+    <string name="keep_current_quantum3ds_directory">Keep Current QUANTUM 3DS Directory</string>
     <string name="use_prior_lime3ds_directory">Use Prior Lime3DS Directory</string>
     <string name="select">Select</string>
     <string name="cannot_skip">You can\'t skip setting up the user folder</string>
