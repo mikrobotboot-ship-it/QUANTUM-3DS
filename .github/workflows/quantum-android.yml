@@ -35,6 +35,12 @@ jobs:
         run: |
           sdkmanager "ndk;27.3.13750724" "cmake;3.30.3"
 
+      - name: Install ccache
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ccache
+          ccache --version
+
       - name: Clone Azahar with submodules
         run: |
           git clone --depth 1 --recurse-submodules \
