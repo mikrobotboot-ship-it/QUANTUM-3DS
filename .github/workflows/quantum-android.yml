@@ -41,9 +41,13 @@ jobs:
             https://github.com/azahar-emu/azahar.git upstream
 
           git -C upstream submodule status --recursive
-          test -f upstream/externals/boost/CMakeLists.txt
-          test -f upstream/externals/dynarmic/CMakeLists.txt
-          test -f upstream/dist/compatibility_list/compatibility_list.qrc
+          if git -C upstream submodule status --recursive | grep -E '^[+-U]'; then
+            echo "Submodule nao inicializado corretamente"
+            exit 1
+          fi
+          test -d upstream/externals/boost
+          test -d upstream/externals/dynarmic
+          test -d upstream/dist/compatibility_list
 
       - name: Apply QUANTUM Android branding
         run: |
