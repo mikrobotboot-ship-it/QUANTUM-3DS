@@ -1,0 +1,71 @@
+name: QUANTUM 3DS Android APK
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'src/android/**'
+      - '.github/workflows/quantum-android.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  android-arm64:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+
+    steps:
+      - name: Checkout branding
+        uses: actions/checkout@v4
+
+      - name: Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install NDK and CMake
+        run: |
+          yes | sdkmanager --licenses >/dev/null
+          sdkmanager "ndk;27.3.13750724" "cmake;3.30.3"
+
+      - name: Clone Azahar with submodules
+        run: |
+          git clone --depth 1 --recurse-submodules \
+            https://github.com/azahar-emu/azahar.git upstream
+
+          git -C upstream submodule status --recursive
+          test -f upstream/externals/boost/CMakeLists.txt
+          test -f upstream/externals/dynarmic/CMakeLists.txt
+          test -f upstream/dist/compatibility_list/compatibility_list.qrc
+
+      - name: Apply QUANTUM Android branding
+        run: |
+          rm -rf upstream/src/android
+          cp -a src/android upstream/src/android
+
+      - name: Build APK
+        working-directory: upstream
+        run: |
+          chmod +x .ci/android.sh
+          TARGET=vanilla OS=android ./.ci/android.sh
+
+      - name: Collect APK
+        run: |
+          mkdir -p quantum-artifacts
+          find upstream/src/android/app/build/outputs/apk \
+            -type f -name '*.apk' -exec cp {} quantum-artifacts/ \;
+          test -n "$(find quantum-artifacts -name '*.apk' -print -quit)"
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: QUANTUM-3DS-Android-ARM64
+          path: quantum-artifacts/*.apk
+          if-no-files-found: error
+          retention-days: 14
