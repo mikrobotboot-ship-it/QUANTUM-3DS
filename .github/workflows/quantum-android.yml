@@ -27,11 +27,12 @@ jobs:
           java-version: '17'
 
       - name: Android SDK
-        uses: android-actions/setup-android@v3
+        uses: android-actions/setup-android@v4
+        with:
+          accept-android-sdk-licenses: true
 
       - name: Install NDK and CMake
         run: |
-          yes | sdkmanager --licenses >/dev/null
           sdkmanager "ndk;27.3.13750724" "cmake;3.30.3"
 
       - name: Clone Azahar with submodules
